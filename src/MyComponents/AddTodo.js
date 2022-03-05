@@ -1,18 +1,27 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../state';
 
 export default function AddTodo(props) {
 
     const [title,setTitle] = useState("");
     const [desc,setDescription] = useState("");
 
-    
+    const dispatch = useDispatch()
+    //const actions = bindActionCreators(actionCreators,dispatch); this way need to use actions.addTodo;
+    const {addTodo} = bindActionCreators(actionCreators,dispatch);
+
     const submit = (e)=>{
         e.preventDefault();
         if(!title || !desc){
             alert("Title or Desc can not be null")
         }
-        props.addTodo(title,desc);
+        addTodo(title,desc);
+        setTitle('');
+        setDescription('');
     }
+    
 
     return (
         <div className='container my-3'>
