@@ -8,7 +8,7 @@ const initState = ()=>{
 
 
 const reducer = (state= initState(),action)=>{
-    console.log('inside reducer !');
+    console.log('inside reducers !');
     if(action.type === 'add'){
         let currentSrNo = 0;
         if(state.length > 0){
