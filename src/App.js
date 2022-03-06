@@ -5,7 +5,8 @@ import Footer from './MyComponents/Footer';
 import React, { useEffect, useState } from 'react';
 import AddTodo from './MyComponents/AddTodo';
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
+  HashRouter,
   Route,
   Routes
 } from "react-router-dom";
@@ -49,7 +50,7 @@ function App() {
 
   return (
     <>
-      <Router>
+      <HashRouter>
         <Header title="Passed Value" showSearch={true} />  {/*value is sent through props*/}
 
         <Routes>
@@ -70,7 +71,7 @@ function App() {
 
 
         <Footer />
-      </Router>
+      </HashRouter>
     </>
   );
 }
