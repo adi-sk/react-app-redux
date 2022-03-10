@@ -11,6 +11,7 @@ import {
   Routes
 } from "react-router-dom";
 import About from './MyComponents/About';
+import News from './News/News';
 
 function App() {
 
@@ -56,17 +57,18 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-            <AddTodo addTodo={addTodo} />
-            <Todo todos={todos} onDelete={onDelete} />
+              <AddTodo addTodo={addTodo} />
+              <Todo todos={todos} onDelete={onDelete} />
             </>
           }>
-            
           </Route>
           <Route path="/about" element={
             <About />
           }>
-            
+
           </Route>
+
+          <Route path='/news'element = {<News/>}></Route>
         </Routes>
 
 
