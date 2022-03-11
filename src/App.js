@@ -52,7 +52,7 @@ function App() {
   return (
     <>
       <HashRouter>
-        <Header title="Passed Value" showSearch={true} />  {/*value is sent through props*/}
+        <Header title="POC" showSearch={true} />  {/*value is sent through props*/}
 
         <Routes>
           <Route path="/" element={
