@@ -68,7 +68,13 @@ function App() {
 
           </Route>
 
-          <Route path='/news'element = {<News/>}></Route>
+          <Route path='/business'element = {<News key="business" category="business" countryCode = "in"/>}></Route>
+          <Route path='/entertainment'element = {<News key="entertainment" category="entertainment" countryCode = "in"/>}></Route>
+          <Route path='/general'element = {<News key="general" category="general" countryCode = "in"/>}></Route>
+          <Route path='/health'element = {<News key="health" category="health" countryCode = "in"/>}></Route>
+          <Route path='/science'element = {<News key="science" category="science" countryCode = "in"/>}></Route>
+          <Route path='/sports'element = {<News key="sports" category="sports" countryCode = "in"/>}></Route>
+          <Route path='/technology'element = {<News key="technology" category="technology" countryCode = "in"/>}></Route>
         </Routes>
 
 

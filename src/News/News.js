@@ -18,7 +18,7 @@ export class News extends Component {
     }
 
     async componentDidMount(){
-        let url = "https://saurav.tech/NewsAPI/top-headlines/category/technology/in.json";
+        let url = `https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/${this.props.countryCode}.json`;
         let data= await fetch(url);
         let parsedData = await data.json();
         this.setState({articles : parsedData.articles.slice(0,this.pageSize) ,
@@ -73,12 +73,12 @@ export class News extends Component {
 
                                             return <div className="col-md-4" key={article.publishedAt}>
                                                 <NewsItem title={article.title} description={article.description}
-                                                    imageUrl={article.urlToImage} url={article.url} />
+                                                    imageUrl={article.urlToImage} url={article.url} author={article.author} date={article.publishedAt} source={article.source.name} />
                                             </div>
                                         })}
 
                                     </div>
-                                    <div className="container" className="d-flex justify-content-between">
+                                    <div className="container d-flex justify-content-between">
                                         <button type="button" disabled={this.state.page === 1} onClick={this.handlePrev} className="btn btn-primary">&larr; Prev</button>
                                         <button type="button" disabled={this.state.disableNext} className="btn btn-primary" onClick={this.handleNext}>Next &rarr;</button>
                                     </div>
