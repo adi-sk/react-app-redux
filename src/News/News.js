@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import NewsItem from './NewsItem'
+import Spinner from './Spinner';
 
 export class News extends Component {
 
@@ -74,11 +75,7 @@ export class News extends Component {
             <>
                 {
                     this.state.loading ?
-                        <div className="text-center">
-                            <div className="spinner-border" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                        </div> :
+                        <Spinner/> :
                         <>
                             <div>
 
@@ -88,11 +85,7 @@ export class News extends Component {
                                     dataLength={this.state.articles.length}
                                     next={this.fetchMoreData}
                                     hasMore={this.state.articles.length !== this.state.allArticles.length}
-                                    loader={<div className="text-center">
-                                        <div className="spinner-border" role="status">
-                                            <span className="visually-hidden">Loading...</span>
-                                        </div>
-                                    </div>}
+                                    loader={<Spinner/>}
                                 >
                                     <div className="container">
                                         <div className="row">
