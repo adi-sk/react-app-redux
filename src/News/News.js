@@ -20,9 +20,12 @@ export class News extends Component {
     }
 
     async componentDidMount() {
+        window.scrollTo(0, 0)
         let url = `https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/${this.props.countryCode}.json`;
         let data = await fetch(url);
+        this.props.setProgress(10)
         let parsedData = await data.json();
+        this.props.setProgress(30)
         this.setState({
             articles: parsedData.articles.slice(0, this.pageSize),
             allArticles: parsedData.articles,
@@ -30,7 +33,8 @@ export class News extends Component {
             totalPages: Math.ceil(parsedData.articles.length / this.pageSize),
             page: 1
         });
-        window.scrollTo(0, 0)
+        this.props.setProgress(100)
+        
     }
 
     handlePrev = () => {
@@ -78,9 +82,6 @@ export class News extends Component {
                         <Spinner/> :
                         <>
                             <div>
-
-
-
                                 <InfiniteScroll
                                     dataLength={this.state.articles.length}
                                     next={this.fetchMoreData}

@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import About from './MyComponents/About';
 import News from './News/News';
+import LoadingBar from 'react-top-loading-bar'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
   }
 
   const [todos, setTodos] = useState(initTodos);
+  const [progress, setProgress] = useState(0);
   useEffect(() => { localStorage.setItem("todos", JSON.stringify(todos)) }, [todos]);
 
   const addTodo = (title, desc) => {
@@ -49,10 +51,19 @@ function App() {
 
   }
 
+  const setProgressVal= (val) =>{
+    setProgress(val);
+  }
+
   return (
     <>
       <HashRouter>
         <Header title="POC" showSearch={true} />  {/*value is sent through props*/}
+        <LoadingBar
+          color='#f11946'
+          progress={progress}
+          height="3"
+        />
 
         <Routes>
           <Route path="/" element={
@@ -68,13 +79,13 @@ function App() {
 
           </Route>
 
-          <Route path='/business'element = {<News key="business" category="business" countryCode = "in"/>}></Route>
-          <Route path='/entertainment'element = {<News key="entertainment" category="entertainment" countryCode = "in"/>}></Route>
-          <Route path='/general'element = {<News key="general" category="general" countryCode = "in"/>}></Route>
-          <Route path='/health'element = {<News key="health" category="health" countryCode = "in"/>}></Route>
-          <Route path='/science'element = {<News key="science" category="science" countryCode = "in"/>}></Route>
-          <Route path='/sports'element = {<News key="sports" category="sports" countryCode = "in"/>}></Route>
-          <Route path='/technology'element = {<News key="technology" category="technology" countryCode = "in"/>}></Route>
+          <Route path='/business'element = {<News setProgress={setProgressVal} key="business" category="business" countryCode = "in"/>}></Route>
+          <Route path='/entertainment'element = {<News setProgress={setProgressVal} key="entertainment" category="entertainment" countryCode = "in"/>}></Route>
+          <Route path='/general'element = {<News setProgress={setProgressVal} key="general" category="general" countryCode = "in"/>}></Route>
+          <Route path='/health'element = {<News setProgress={setProgressVal} key="health" category="health" countryCode = "in"/>}></Route>
+          <Route path='/science'element = {<News setProgress={setProgressVal} key="science" category="science" countryCode = "in"/>}></Route>
+          <Route path='/sports'element = {<News setProgress={setProgressVal} key="sports" category="sports" countryCode = "in"/>}></Route>
+          <Route path='/technology'element = {<News setProgress={setProgressVal} key="technology" category="technology" countryCode = "in"/>}></Route>
         </Routes>
 
 
