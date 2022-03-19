@@ -23,7 +23,7 @@ function App() {
   }
 
   const [todos, setTodos] = useState(initTodos);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(10);
   useEffect(() => { localStorage.setItem("todos", JSON.stringify(todos)) }, [todos]);
 
   const addTodo = (title, desc) => {
@@ -62,7 +62,7 @@ function App() {
         <LoadingBar
           color='#f11946'
           progress={progress}
-          height="3"
+          height={3}
         />
 
         <Routes>
