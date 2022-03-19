@@ -23,7 +23,7 @@ function App() {
   }
 
   const [todos, setTodos] = useState(initTodos);
-  const [progress, setProgress] = useState(10);
+  const [progress, setProgress] = useState(0);
   useEffect(() => { localStorage.setItem("todos", JSON.stringify(todos)) }, [todos]);
 
   const addTodo = (title, desc) => {
