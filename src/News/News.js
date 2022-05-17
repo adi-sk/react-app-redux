@@ -21,11 +21,12 @@ export class News extends Component {
 
     async componentDidMount() {
         window.scrollTo(0, 0)
+        this.props.setProgress(10)
         let url = `https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/${this.props.countryCode}.json`;
         let data = await fetch(url);
-        this.props.setProgress(10)
-        let parsedData = await data.json();
         this.props.setProgress(30)
+        let parsedData = await data.json();
+        this.props.setProgress(70)
         this.setState({
             articles: parsedData.articles.slice(0, this.pageSize),
             allArticles: parsedData.articles,
